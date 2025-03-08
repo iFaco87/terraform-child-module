@@ -1,0 +1,4 @@
+set -x
+make fmt
+#make check #enable once linting and tfsec-ing is done
+make docs
