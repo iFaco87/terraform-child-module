@@ -18,22 +18,6 @@ resource "aws_key_pair" "this" {
   }
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = var.ami_most_recent
-
-  filter {
-    name   = "name"
-    values = [var.ami_filter_name]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = [var.ami_filter_virtualization_type]
-  }
-
-  owners = [var.ami_filter_owners]
-}
-
 data "aws_subnets" "private" {
   filter {
     name   = "tag:Type"
@@ -51,7 +35,7 @@ data "aws_security_groups" "private" {
 resource "aws_instance" "this" {
   depends_on                  = [aws_key_pair.this]
   for_each                    = var.instances
-  ami                         = lookup(each.value, "ami", data.aws_ami.ubuntu.id)
+  ami                         = var.ami_id
   instance_type               = each.value.instance_type
   key_name                    = each.value.key_name
   subnet_id                   = each.value.subnet_id

@@ -28,22 +28,7 @@ variable "keypairs" {
   }))
 }
 
-variable "ami_most_recent" {
-  default = true
-  type    = bool
-}
-
-variable "ami_filter_name" {
-  default = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
-  type    = string
-}
-
-variable "ami_filter_virtualization_type" {
-  default = "hvm"
-  type    = string
-}
-
-variable "ami_filter_owners" {
-  default = "099720109477" # Canonical
+variable "ami_id" {
+  default = "ami-0ff65a02439d77840"
   type    = string
 }
