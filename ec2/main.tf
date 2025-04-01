@@ -18,17 +18,17 @@ resource "aws_key_pair" "this" {
   }
 }
 
-data "aws_subnets" "private" {
+data "aws_subnets" "public" {
   filter {
     name   = "tag:Type"
-    values = ["private"]
+    values = ["public"]
   }
 }
 
-data "aws_security_groups" "private" {
+data "aws_security_groups" "public" {
   filter {
     name   = "tag:Type"
-    values = ["private"]
+    values = ["public"]
   }
 }
 
