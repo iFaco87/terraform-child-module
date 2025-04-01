@@ -29,6 +29,6 @@ variable "keypairs" {
 }
 
 variable "ami_id" {
-  default = "ami-0ff65a02439d77840"
+  default = "ami-0dcac383e85adfc33"
   type    = string
 }
